@@ -310,7 +310,13 @@ public class QRCodeScannerController: UIViewController,
             return
         }
         captureSession.addOutput(dataOutput)
-        dataOutput.metadataObjectTypes = dataOutput.availableMetadataObjectTypes
+        dataOutput.metadataObjectTypes = [
+            AVMetadataObject.ObjectType.aztec,
+            AVMetadataObject.ObjectType.qr,
+            AVMetadataObject.ObjectType.ean13,
+            AVMetadataObject.ObjectType.ean8,
+            AVMetadataObject.ObjectType.dataMatrix
+        ]
         dataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
     }
     
